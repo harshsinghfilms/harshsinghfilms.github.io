@@ -175,11 +175,18 @@
       object-fit: contain;
       object-position: center;
 
-      filter: brightness(0.20);
+      filter: brightness(0.90);
 
       animation: cinematic-scale 30s infinite;
 
       will-change: transform;
+    }
+
+
+    /* H.png — slightly darker than the other images */
+
+    .still:nth-child(2) img {
+      filter: brightness(0.85);
     }
 
 

@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +44,6 @@
     .nav {
       position: fixed;
       inset: 0 0 auto 0;
-
       z-index: 20;
 
       height: 82px;
@@ -73,7 +71,6 @@
 
     .brand {
       color: #F1EEE7;
-
       text-decoration: none;
 
       font-size: 14px;
@@ -88,13 +85,11 @@
 
     .nav-links a {
       color: rgba(241, 238, 231, 0.78);
-
       text-decoration: none;
 
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.18em;
-
       text-transform: uppercase;
 
       transition: opacity 0.25s ease;
@@ -125,11 +120,11 @@
     /* =========================================================
        CINEMATIC SLIDESHOW
        
-       The source images are 1920 × 818.
-       Aspect ratio ≈ 2.35:1.
+       Source images: 1920 × 818
+       Aspect ratio: approximately 2.35:1
 
-       The image always spans the FULL WIDTH of the viewport.
-       It is never cropped horizontally.
+       The slideshow spans the full width of the screen.
+       The original cinematic composition is preserved.
     ========================================================= */
 
     .image-slideshow {
@@ -152,11 +147,10 @@
     }
 
 
-    /* Every still occupies exactly the same cinematic frame */
+    /* Every still occupies the exact same position */
 
     .still {
       position: absolute;
-
       inset: 0;
 
       width: 100%;
@@ -170,7 +164,7 @@
     }
 
 
-    /* Preserve the complete 1920 × 818 image */
+    /* Preserve the complete widescreen frame */
 
     .still img {
       width: 100%;
@@ -179,7 +173,6 @@
       display: block;
 
       object-fit: contain;
-
       object-position: center;
 
       filter: saturate(0.88);
@@ -251,9 +244,6 @@
 
     /* =========================================================
        CROSSFADE
-       
-       Each image fades in and then fades out.
-       Because every frame is stacked, the transitions overlap.
     ========================================================= */
 
     @keyframes cinematic-fade {
@@ -280,7 +270,7 @@
     }
 
 
-    /* Very subtle cinematic movement */
+    /* Very subtle movement */
 
     @keyframes cinematic-scale {
 
@@ -304,7 +294,6 @@
 
     .hero-vignette {
       position: absolute;
-
       inset: 0;
 
       z-index: 2;
@@ -368,7 +357,7 @@
     .hero-title {
       color: #F1EEE7;
 
-      font-size: clamp(70px, 10vw, 150px);
+      font-size: clamp(68px, 9vw, 140px);
 
       line-height: 0.86;
 
@@ -426,13 +415,12 @@
 
     .hero-action:hover {
       opacity: 0.55;
-
       border-color: transparent;
     }
 
 
     /* =========================================================
-       SMALL BOTTOM-RIGHT INFORMATION
+       BOTTOM RIGHT INFORMATION
     ========================================================= */
 
     .hero-meta {
@@ -481,22 +469,17 @@
 
     /* =========================================================
        MOBILE
-       
-       On phones, the cinematic image still keeps its
-       widescreen composition rather than being stretched.
     ========================================================= */
 
     @media (max-width: 700px) {
 
       .nav {
         height: 68px;
-
         padding: 0 20px;
       }
 
       .brand {
         font-size: 12px;
-
         letter-spacing: 0.15em;
       }
 
@@ -506,7 +489,6 @@
 
       .nav-links a {
         font-size: 8px;
-
         letter-spacing: 0.12em;
       }
 
@@ -517,13 +499,11 @@
       .hero-content {
         left: 20px;
         right: 20px;
-
         bottom: 70px;
       }
 
       .eyebrow {
         font-size: 8px;
-
         letter-spacing: 0.18em;
       }
 
@@ -533,7 +513,6 @@
 
       .hero-subtitle {
         max-width: 90%;
-
         font-size: 14px;
       }
 
@@ -543,7 +522,6 @@
 
       .scroll-note {
         left: 20px;
-
         bottom: 22px;
       }
     }
@@ -612,9 +590,9 @@
 
       <!-- =====================================================
            CINEMATIC IMAGE SLIDESHOW
-           
-           Final visual order:
-           
+
+           Final visual sequence:
+
            01 — Earth with sunlight
            08 — Ships firing
            02 — Earth from space
@@ -710,7 +688,7 @@
       </div>
 
 
-      <!-- Small supporting text -->
+      <!-- Bottom-right supporting information -->
 
       <div class="hero-meta">
         3D · Animation · Storytelling
@@ -743,4 +721,3 @@
 
 </body>
 </html>
-```

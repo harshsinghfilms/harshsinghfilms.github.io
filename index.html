@@ -6,12 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Harsh Singh — Writer · Director · Animator</title>
+
   <meta
     name="description"
     content="Harsh Singh — Writer, Director and Animator. Where 3D, color and storytelling become experience."
   >
 
   <style>
+
     /* =========================================================
        FOUNDATION
     ========================================================= */
@@ -43,6 +45,7 @@
     .nav {
       position: fixed;
       inset: 0 0 auto 0;
+
       z-index: 20;
 
       height: 82px;
@@ -53,11 +56,12 @@
 
       padding: 0 3.5vw;
 
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.58),
-        transparent
-      );
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.62),
+          transparent
+        );
 
       pointer-events: none;
     }
@@ -69,6 +73,7 @@
 
     .brand {
       color: #F1EEE7;
+
       text-decoration: none;
 
       font-size: 14px;
@@ -83,11 +88,13 @@
 
     .nav-links a {
       color: rgba(241, 238, 231, 0.78);
+
       text-decoration: none;
 
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.18em;
+
       text-transform: uppercase;
 
       transition: opacity 0.25s ease;
@@ -107,7 +114,7 @@
 
       width: 100%;
       height: 100vh;
-      min-height: 680px;
+      min-height: 650px;
 
       overflow: hidden;
 
@@ -116,35 +123,54 @@
 
 
     /* =========================================================
-       CINEMATIC STILL SLIDESHOW
+       CINEMATIC SLIDESHOW
        
-       10 images
-       3 seconds visible per image
-       1 second overlapping crossfade
-       
-       Total animation cycle: 30 seconds
+       The source images are 1920 × 818.
+       Aspect ratio ≈ 2.35:1.
+
+       The image always spans the FULL WIDTH of the viewport.
+       It is never cropped horizontally.
     ========================================================= */
 
     .image-slideshow {
       position: absolute;
-      inset: 0;
+
+      top: 50%;
+      left: 0;
+
+      width: 100%;
+
+      transform: translateY(-50%);
+
+      aspect-ratio: 1920 / 818;
 
       z-index: 0;
+
       overflow: hidden;
+
       background: #0A0A0A;
     }
 
+
+    /* Every still occupies exactly the same cinematic frame */
+
     .still {
       position: absolute;
+
       inset: 0;
+
+      width: 100%;
+      height: 100%;
 
       opacity: 0;
 
-      animation:
-        cinematic-fade 30s infinite;
+      animation: cinematic-fade 30s infinite;
 
-      will-change: opacity, transform;
+      will-change: opacity;
     }
+
+
+    /* Preserve the complete 1920 × 818 image */
 
     .still img {
       width: 100%;
@@ -152,20 +178,25 @@
 
       display: block;
 
-      object-fit: cover;
+      object-fit: contain;
+
+      object-position: center;
 
       filter: saturate(0.88);
 
-      transform: scale(1.015);
-
-      animation:
-        cinematic-scale 30s infinite;
+      animation: cinematic-scale 30s infinite;
 
       will-change: transform;
     }
 
 
-    /* Individual timing for each frame */
+    /* =========================================================
+       FRAME TIMING
+       
+       10 images
+       3 seconds between each image
+       30 second complete cycle
+    ========================================================= */
 
     .still:nth-child(1),
     .still:nth-child(1) img {
@@ -218,15 +249,12 @@
     }
 
 
-    /*
-      Each image gets:
-      - a fade in
-      - a short period of full visibility
-      - a fade out
-
-      Because every image is stacked in exactly the same position,
-      the transitions overlap naturally.
-    */
+    /* =========================================================
+       CROSSFADE
+       
+       Each image fades in and then fades out.
+       Because every frame is stacked, the transitions overlap.
+    ========================================================= */
 
     @keyframes cinematic-fade {
 
@@ -251,50 +279,55 @@
       }
     }
 
+
+    /* Very subtle cinematic movement */
+
     @keyframes cinematic-scale {
 
       0% {
-        transform: scale(1.015);
+        transform: scale(1);
       }
 
       13% {
-        transform: scale(1.035);
+        transform: scale(1.018);
       }
 
       100% {
-        transform: scale(1.035);
+        transform: scale(1.018);
       }
     }
 
 
     /* =========================================================
-       IMAGE TREATMENT
+       CINEMATIC DARK TREATMENT
     ========================================================= */
 
-    .still::after {
-      content: "";
-
+    .hero-vignette {
       position: absolute;
+
       inset: 0;
 
+      z-index: 2;
+
+      pointer-events: none;
+
       background:
+
         linear-gradient(
           to bottom,
-          rgba(0, 0, 0, 0.42) 0%,
-          rgba(0, 0, 0, 0.04) 30%,
-          rgba(0, 0, 0, 0.08) 55%,
-          rgba(0, 0, 0, 0.72) 100%
+          rgba(0, 0, 0, 0.50) 0%,
+          rgba(0, 0, 0, 0.04) 25%,
+          rgba(0, 0, 0, 0.04) 55%,
+          rgba(0, 0, 0, 0.68) 100%
         ),
 
         linear-gradient(
           to right,
-          rgba(0, 0, 0, 0.35) 0%,
-          transparent 40%,
+          rgba(0, 0, 0, 0.30) 0%,
+          transparent 38%,
           transparent 72%,
-          rgba(0, 0, 0, 0.20) 100%
+          rgba(0, 0, 0, 0.22) 100%
         );
-
-      pointer-events: none;
     }
 
 
@@ -314,7 +347,7 @@
     }
 
 
-    /* Small role line */
+    /* Role */
 
     .eyebrow {
       margin-bottom: 15px;
@@ -323,7 +356,9 @@
 
       font-size: 10px;
       font-weight: 700;
+
       letter-spacing: 0.24em;
+
       text-transform: uppercase;
     }
 
@@ -334,14 +369,16 @@
       color: #F1EEE7;
 
       font-size: clamp(70px, 10vw, 150px);
+
       line-height: 0.86;
 
       font-weight: 300;
+
       letter-spacing: -0.06em;
     }
 
 
-    /* Philosophy line */
+    /* Philosophy */
 
     .hero-subtitle {
       margin-top: 25px;
@@ -351,6 +388,7 @@
       color: rgba(241, 238, 231, 0.82);
 
       font-size: clamp(15px, 1.35vw, 19px);
+
       line-height: 1.5;
 
       letter-spacing: 0.015em;
@@ -363,16 +401,22 @@
       display: inline-flex;
 
       margin-top: 34px;
+
       padding-bottom: 8px;
 
-      border-bottom: 1px solid rgba(241, 238, 231, 0.75);
+      border-bottom:
+        1px solid rgba(241, 238, 231, 0.75);
 
       color: #F1EEE7;
+
       text-decoration: none;
 
       font-size: 10px;
+
       font-weight: 700;
+
       letter-spacing: 0.2em;
+
       text-transform: uppercase;
 
       transition:
@@ -382,12 +426,13 @@
 
     .hero-action:hover {
       opacity: 0.55;
+
       border-color: transparent;
     }
 
 
     /* =========================================================
-       BOTTOM RIGHT META
+       SMALL BOTTOM-RIGHT INFORMATION
     ========================================================= */
 
     .hero-meta {
@@ -401,8 +446,11 @@
       color: rgba(241, 238, 231, 0.55);
 
       font-size: 9px;
+
       font-weight: 700;
+
       letter-spacing: 0.2em;
+
       text-transform: uppercase;
 
       text-align: right;
@@ -424,24 +472,31 @@
       color: rgba(241, 238, 231, 0.40);
 
       font-size: 9px;
+
       letter-spacing: 0.18em;
+
       text-transform: uppercase;
     }
 
 
     /* =========================================================
        MOBILE
+       
+       On phones, the cinematic image still keeps its
+       widescreen composition rather than being stretched.
     ========================================================= */
 
     @media (max-width: 700px) {
 
       .nav {
         height: 68px;
+
         padding: 0 20px;
       }
 
       .brand {
         font-size: 12px;
+
         letter-spacing: 0.15em;
       }
 
@@ -451,6 +506,7 @@
 
       .nav-links a {
         font-size: 8px;
+
         letter-spacing: 0.12em;
       }
 
@@ -461,11 +517,13 @@
       .hero-content {
         left: 20px;
         right: 20px;
+
         bottom: 70px;
       }
 
       .eyebrow {
         font-size: 8px;
+
         letter-spacing: 0.18em;
       }
 
@@ -475,6 +533,7 @@
 
       .hero-subtitle {
         max-width: 90%;
+
         font-size: 14px;
       }
 
@@ -484,13 +543,14 @@
 
       .scroll-note {
         left: 20px;
+
         bottom: 22px;
       }
     }
 
 
     /* =========================================================
-       ACCESSIBILITY
+       REDUCED MOTION
     ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
@@ -511,6 +571,7 @@
 
 <body>
 
+
   <!-- =========================================================
        NAVIGATION
   ========================================================= -->
@@ -522,16 +583,26 @@
     </a>
 
     <nav class="nav-links">
-      <a href="#work">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+
+      <a href="#work">
+        Projects
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
     </nav>
 
   </header>
 
 
   <!-- =========================================================
-       HERO
+       MAIN
   ========================================================= -->
 
   <main>
@@ -540,16 +611,26 @@
 
 
       <!-- =====================================================
-           10 CINEMATIC STILLS
-
-           Replace these filenames with your actual images.
-
-           The order here is the final visual sequence:
-           Earth → Ships → Earth → Red Earth → Ocean →
-           Steve → Coral → Lantern → T-Rex → Boat
+           CINEMATIC IMAGE SLIDESHOW
+           
+           Final visual order:
+           
+           01 — Earth with sunlight
+           08 — Ships firing
+           02 — Earth from space
+           03 — Red Earth / asteroids
+           04 — Ocean waves
+           07 — Steve screaming
+           05 — Coral / fish
+           09 — Steve under lantern
+           06 — T-Rex skeleton
+           10 — Wide boat
       ====================================================== -->
 
-      <div class="image-slideshow" aria-hidden="true">
+      <div
+        class="image-slideshow"
+        aria-hidden="true"
+      >
 
         <div class="still">
           <img src="images/still-01.jpg" alt="">
@@ -595,6 +676,13 @@
 
 
       <!-- =====================================================
+           DARK OVERLAY
+      ====================================================== -->
+
+      <div class="hero-vignette"></div>
+
+
+      <!-- =====================================================
            HERO TEXT
       ====================================================== -->
 
@@ -612,37 +700,46 @@
           Where 3D, color and storytelling become experience.
         </p>
 
-        <a class="hero-action" href="#work">
+        <a
+          class="hero-action"
+          href="#work"
+        >
           View work&nbsp; →
         </a>
 
       </div>
 
 
-      <!-- Small supporting information -->
+      <!-- Small supporting text -->
 
       <div class="hero-meta">
         3D · Animation · Storytelling
       </div>
 
 
+      <!-- Scroll indicator -->
+
       <div class="scroll-note">
         Scroll to explore ↓
       </div>
+
 
     </section>
 
 
     <!-- =========================================================
-         PLACEHOLDER SECTIONS
-         These will be designed later.
+         FUTURE SECTIONS
     ========================================================== -->
 
     <section id="work" style="height: 1px;"></section>
+
     <section id="about" style="height: 1px;"></section>
+
     <section id="contact" style="height: 1px;"></section>
 
+
   </main>
+
 
 </body>
 </html>

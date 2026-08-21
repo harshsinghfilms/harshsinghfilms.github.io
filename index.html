@@ -23,6 +23,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     html,
     body {
       width: 100%;
@@ -30,10 +34,6 @@
       background: #0A0A0A;
       color: #F1EEE7;
       font-family: Arial, Helvetica, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -123,12 +123,6 @@
 
     /* =========================================================
        CINEMATIC SLIDESHOW
-       
-       Source images: 1920 × 818
-       Aspect ratio: approximately 2.35:1
-
-       The slideshow spans the full width of the screen.
-       The original cinematic composition is preserved.
     ========================================================= */
 
     .image-slideshow {
@@ -151,8 +145,6 @@
     }
 
 
-    /* Every still occupies the exact same position */
-
     .still {
       position: absolute;
       inset: 0;
@@ -167,8 +159,6 @@
       will-change: opacity;
     }
 
-
-    /* Preserve the complete widescreen frame */
 
     .still img {
       width: 100%;
@@ -187,8 +177,7 @@
     }
 
 
-    /* H.png — same 90% brightness, kept separate
-       so it can be adjusted independently later */
+    /* H.png */
 
     .still:nth-child(2) img {
       filter: brightness(0.90);
@@ -197,10 +186,6 @@
 
     /* =========================================================
        FRAME TIMING
-       
-       9 images
-       3.5 seconds between each image
-       31.5 second complete cycle
     ========================================================= */
 
     .still:nth-child(1),
@@ -277,7 +262,9 @@
     }
 
 
-    /* Very subtle movement */
+    /* =========================================================
+       VERY SUBTLE MOVEMENT
+    ========================================================= */
 
     @keyframes cinematic-scale {
 
@@ -297,8 +284,6 @@
 
     /* =========================================================
        CINEMATIC DARK TREATMENT
-       
-       Disabled so the original image colors remain visible.
     ========================================================= */
 
     .hero-vignette {
@@ -329,8 +314,6 @@
     }
 
 
-    /* Role */
-
     .eyebrow {
       margin-bottom: 15px;
 
@@ -349,8 +332,6 @@
     }
 
 
-    /* Main name */
-
     .hero-title {
       color: #F1EEE7;
 
@@ -361,14 +342,12 @@
       font-weight: 300;
 
       letter-spacing: -0.06em;
-      
+
       text-shadow:
         0 5px 25px rgba(0, 0, 0, 0.75),
         0 2px 8px rgba(0, 0, 0, 0.65);
     }
 
-
-    /* Philosophy */
 
     .hero-subtitle {
       margin-top: 25px;
@@ -384,8 +363,6 @@
       letter-spacing: 0.015em;
     }
 
-
-    /* View work */
 
     .hero-action {
       display: inline-flex;
@@ -469,29 +446,34 @@
 
 
     /* =========================================================
-       PROJECTS
+       PROJECTS SECTION
     ========================================================= */
 
-    .projects {
+    .projects-section {
       position: relative;
 
       width: 100%;
 
-      padding: 130px 3.5vw 150px;
+      padding:
+        120px
+        3.5vw
+        160px;
 
       background: #0A0A0A;
 
-      scroll-margin-top: 20px;
+      scroll-margin-top: 40px;
     }
 
-    .projects-header {
-      max-width: 900px;
 
-      margin-bottom: 95px;
+    /* Main section heading */
+
+    .projects-intro {
+      max-width: 1200px;
+      margin: 0 auto 105px;
     }
 
-    .projects-eyebrow {
-      margin-bottom: 18px;
+    .projects-label {
+      margin-bottom: 16px;
 
       color: #B89A63;
 
@@ -506,64 +488,80 @@
     .projects-title {
       color: #F1EEE7;
 
-      font-size: clamp(42px, 5vw, 76px);
+      font-size: clamp(58px, 6vw, 92px);
 
-      line-height: 0.95;
+      line-height: 0.9;
 
       font-weight: 300;
 
-      letter-spacing: -0.05em;
+      letter-spacing: -0.055em;
     }
 
 
-    /* Project category */
+    /* =========================================================
+       PROJECT CATEGORY
+    ========================================================= */
 
     .project-category {
-      margin-bottom: 100px;
+      width: 100%;
+
+      max-width: 1200px;
+
+      margin: 0 auto 105px;
     }
 
-    .project-category:last-child {
-      margin-bottom: 0;
-    }
 
     .category-title {
-      margin-bottom: 28px;
+      margin-bottom: 25px;
 
-      color: rgba(241, 238, 231, 0.55);
+      color: rgba(241, 238, 231, 0.68);
 
-      font-size: 10px;
+      font-size: 13px;
       font-weight: 700;
 
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
 
       text-transform: uppercase;
     }
 
 
-    /* Project grid */
+    /* =========================================================
+       PROJECT GRID
+    ========================================================= */
 
     .project-grid {
       display: grid;
 
       grid-template-columns: repeat(2, minmax(0, 1fr));
 
-      gap: 42px 28px;
+      gap: 0;
+
+      width: 100%;
     }
 
 
-    /* Project card */
+    /* =========================================================
+       PROJECT CARD
+    ========================================================= */
 
     .project-card {
       display: block;
+
+      width: 100%;
 
       color: inherit;
 
       text-decoration: none;
 
+      overflow: hidden;
+
+      background: #0A0A0A;
+
       cursor: pointer;
     }
 
-    .project-image {
+
+    .project-thumbnail {
       position: relative;
 
       width: 100%;
@@ -572,10 +570,11 @@
 
       overflow: hidden;
 
-      background: #111;
+      background: #050505;
     }
 
-    .project-image img {
+
+    .project-thumbnail img {
       width: 100%;
       height: 100%;
 
@@ -584,98 +583,70 @@
       object-fit: cover;
 
       transition:
-        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.6s cubic-bezier(0.2, 0.65, 0.25, 1),
         opacity 0.4s ease;
-    }
 
-    .project-card:hover .project-image img {
-      transform: scale(1.035);
-
-      opacity: 0.82;
-    }
-
-    .project-overlay {
-      position: absolute;
-      inset: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background: rgba(0, 0, 0, 0.16);
-
-      opacity: 0;
-
-      transition: opacity 0.35s ease;
-    }
-
-    .project-card:hover .project-overlay {
-      opacity: 1;
-    }
-
-    .project-watch {
-      padding: 11px 16px;
-
-      border: 1px solid rgba(241, 238, 231, 0.65);
-
-      color: #F1EEE7;
-
-      font-size: 9px;
-      font-weight: 700;
-
-      letter-spacing: 0.18em;
-
-      text-transform: uppercase;
-
-      background: rgba(10, 10, 10, 0.45);
-
-      backdrop-filter: blur(4px);
+      will-change: transform;
     }
 
 
-    /* Project information */
+    /* Subtle hover */
+
+    .project-card:hover .project-thumbnail img {
+      transform: scale(1.025);
+      opacity: 0.88;
+    }
+
+
+    /* =========================================================
+       PROJECT TITLE
+    ========================================================= */
 
     .project-info {
       display: flex;
 
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
 
-      gap: 20px;
-
-      padding-top: 17px;
+      padding:
+        14px
+        0
+        0;
     }
+
 
     .project-name {
       color: #F1EEE7;
 
-      font-size: 17px;
-      font-weight: 500;
+      font-size: 15px;
+
+      font-weight: 400;
 
       letter-spacing: -0.01em;
     }
 
-    .project-description {
-      margin-top: 7px;
-
-      color: rgba(241, 238, 231, 0.48);
-
-      font-size: 11px;
-
-      line-height: 1.4;
-
-      letter-spacing: 0.01em;
-    }
 
     .project-number {
-      flex-shrink: 0;
+      color: rgba(241, 238, 231, 0.30);
 
-      color: rgba(241, 238, 231, 0.28);
+      font-size: 8px;
 
-      font-size: 9px;
       font-weight: 700;
 
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
+    }
+
+
+    /* =========================================================
+       DOCUMENTARY SINGLE PROJECT
+    ========================================================= */
+
+    .project-category.single .project-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .project-category.single .project-card {
+      max-width: 50%;
     }
 
 
@@ -740,40 +711,56 @@
 
       /* Projects */
 
-      .projects {
-        padding: 90px 20px 110px;
+      .projects-section {
+        padding:
+          90px
+          20px
+          110px;
       }
 
-      .projects-header {
-        margin-bottom: 65px;
-      }
-
-      .projects-title {
-        font-size: clamp(42px, 14vw, 64px);
-      }
-
-      .project-category {
+      .projects-intro {
         margin-bottom: 75px;
       }
 
-      .project-grid {
-        grid-template-columns: 1fr;
+      .projects-label {
+        font-size: 9px;
+      }
 
-        gap: 38px;
+      .projects-title {
+        font-size: clamp(54px, 15vw, 82px);
+      }
+
+      .project-category {
+        margin-bottom: 80px;
+      }
+
+      .category-title {
+        margin-bottom: 20px;
+
+        font-size: 11px;
+
+        letter-spacing: 0.22em;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-category.single .project-card {
+        max-width: 50%;
       }
 
       .project-info {
-        padding-top: 14px;
+        padding-top: 10px;
       }
 
       .project-name {
-        font-size: 16px;
+        font-size: 12px;
       }
 
-      .project-description {
-        font-size: 10px;
+      .project-number {
+        font-size: 7px;
       }
-
     }
 
 
@@ -796,11 +783,9 @@
         opacity: 1;
       }
 
-      .project-image img,
-      .project-overlay {
+      .project-thumbnail img {
         transition: none;
       }
-
     }
 
   </style>
@@ -845,24 +830,15 @@
 
   <main>
 
+
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+
     <section class="hero">
 
 
-      <!-- =====================================================
-           CINEMATIC IMAGE SLIDESHOW
-
-           Final visual sequence:
-
-           01 — A.png
-           08 — H.png
-           02 — B.png
-           03 — C.png
-           04 — D.png
-           05 — E.png
-           09 — I.png
-           06 — F.png
-           10 — J.png
-      ====================================================== -->
+      <!-- CINEMATIC IMAGE SLIDESHOW -->
 
       <div
         class="image-slideshow"
@@ -908,16 +884,12 @@
       </div>
 
 
-      <!-- =====================================================
-           DARK OVERLAY
-      ====================================================== -->
+      <!-- DARK OVERLAY -->
 
       <div class="hero-vignette"></div>
 
 
-      <!-- =====================================================
-           HERO TEXT
-      ====================================================== -->
+      <!-- HERO TEXT -->
 
       <div class="hero-content">
 
@@ -943,14 +915,14 @@
       </div>
 
 
-      <!-- Bottom-right supporting information -->
+      <!-- BOTTOM RIGHT SUPPORTING INFORMATION -->
 
       <div class="hero-meta">
         3D · Animation · Storytelling
       </div>
 
 
-      <!-- Scroll indicator -->
+      <!-- SCROLL INDICATOR -->
 
       <div class="scroll-note">
         Scroll to explore ↓
@@ -960,15 +932,21 @@
     </section>
 
 
-    <!-- =========================================================
+    <!-- =======================================================
          PROJECTS
-    ========================================================== -->
+    ======================================================== -->
 
-    <section id="work" class="projects">
+    <section
+      id="work"
+      class="projects-section"
+    >
 
-      <div class="projects-header">
 
-        <div class="projects-eyebrow">
+      <!-- SECTION INTRO -->
+
+      <div class="projects-intro">
+
+        <div class="projects-label">
           Selected Work
         </div>
 
@@ -992,6 +970,8 @@
         <div class="project-grid">
 
 
+          <!-- DAWN OF LIFE -->
+
           <a
             class="project-card"
             href="https://youtu.be/hunQa3KpqSg"
@@ -999,33 +979,20 @@
             rel="noopener noreferrer"
           >
 
-            <div class="project-image">
+            <div class="project-thumbnail">
 
               <img
                 src="https://img.youtube.com/vi/hunQa3KpqSg/maxresdefault.jpg"
                 alt="Dawn of Life"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/hunQa3KpqSg/hqdefault.jpg';"
               >
-
-              <div class="project-overlay">
-                <span class="project-watch">
-                  Watch Film
-                </span>
-              </div>
 
             </div>
 
             <div class="project-info">
 
-              <div>
-                <div class="project-name">
-                  Dawn of Life
-                </div>
-
-                <div class="project-description">
-                  A cinematic animated short exploring the beginning of life.
-                </div>
+              <div class="project-name">
+                Dawn of Life
               </div>
 
               <div class="project-number">
@@ -1037,6 +1004,8 @@
           </a>
 
 
+          <!-- UNFINISHED SAIL -->
+
           <a
             class="project-card"
             href="https://youtu.be/IxVOakJjzZc"
@@ -1044,33 +1013,20 @@
             rel="noopener noreferrer"
           >
 
-            <div class="project-image">
+            <div class="project-thumbnail">
 
               <img
                 src="https://img.youtube.com/vi/IxVOakJjzZc/maxresdefault.jpg"
                 alt="Unfinished Sail"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/IxVOakJjzZc/hqdefault.jpg';"
               >
-
-              <div class="project-overlay">
-                <span class="project-watch">
-                  Watch Film
-                </span>
-              </div>
 
             </div>
 
             <div class="project-info">
 
-              <div>
-                <div class="project-name">
-                  Unfinished Sail
-                </div>
-
-                <div class="project-description">
-                  A short film built around atmosphere, movement and emotion.
-                </div>
+              <div class="project-name">
+                Unfinished Sail
               </div>
 
               <div class="project-number">
@@ -1090,7 +1046,7 @@
            DOCUMENTARY
       ====================================================== -->
 
-      <div class="project-category">
+      <div class="project-category single">
 
         <h3 class="category-title">
           Documentary
@@ -1099,6 +1055,8 @@
         <div class="project-grid">
 
 
+          <!-- GUTKA -->
+
           <a
             class="project-card"
             href="https://youtu.be/L3yxfnVOWVw"
@@ -1106,33 +1064,20 @@
             rel="noopener noreferrer"
           >
 
-            <div class="project-image">
+            <div class="project-thumbnail">
 
               <img
                 src="https://img.youtube.com/vi/L3yxfnVOWVw/maxresdefault.jpg"
                 alt="Gutka"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/L3yxfnVOWVw/hqdefault.jpg';"
               >
-
-              <div class="project-overlay">
-                <span class="project-watch">
-                  Watch Documentary
-                </span>
-              </div>
 
             </div>
 
             <div class="project-info">
 
-              <div>
-                <div class="project-name">
-                  Gutka
-                </div>
-
-                <div class="project-description">
-                  A documentary exploring the culture and impact of gutka.
-                </div>
+              <div class="project-name">
+                Gutka
               </div>
 
               <div class="project-number">
@@ -1161,6 +1106,8 @@
         <div class="project-grid">
 
 
+          <!-- CREATINE -->
+
           <a
             class="project-card"
             href="https://youtu.be/tMRLyvFKg9c"
@@ -1168,33 +1115,20 @@
             rel="noopener noreferrer"
           >
 
-            <div class="project-image">
+            <div class="project-thumbnail">
 
               <img
                 src="https://img.youtube.com/vi/tMRLyvFKg9c/maxresdefault.jpg"
                 alt="Creatine"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/tMRLyvFKg9c/hqdefault.jpg';"
               >
-
-              <div class="project-overlay">
-                <span class="project-watch">
-                  Watch Advertisement
-                </span>
-              </div>
 
             </div>
 
             <div class="project-info">
 
-              <div>
-                <div class="project-name">
-                  Creatine
-                </div>
-
-                <div class="project-description">
-                  A focused product advertisement built for visual impact.
-                </div>
+              <div class="project-name">
+                Creatine
               </div>
 
               <div class="project-number">
@@ -1206,6 +1140,8 @@
           </a>
 
 
+          <!-- CRUNCH -->
+
           <a
             class="project-card"
             href="https://youtu.be/cTHmW4zBFXg"
@@ -1213,33 +1149,20 @@
             rel="noopener noreferrer"
           >
 
-            <div class="project-image">
+            <div class="project-thumbnail">
 
               <img
                 src="https://img.youtube.com/vi/cTHmW4zBFXg/maxresdefault.jpg"
                 alt="Crunch"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/cTHmW4zBFXg/hqdefault.jpg';"
               >
-
-              <div class="project-overlay">
-                <span class="project-watch">
-                  Watch Advertisement
-                </span>
-              </div>
 
             </div>
 
             <div class="project-info">
 
-              <div>
-                <div class="project-name">
-                  Crunch
-                </div>
-
-                <div class="project-description">
-                  A visual product advertisement focused on energy and presentation.
-                </div>
+              <div class="project-name">
+                Crunch
               </div>
 
               <div class="project-number">
@@ -1254,12 +1177,13 @@
 
       </div>
 
+
     </section>
 
 
-    <!-- =========================================================
+    <!-- =======================================================
          FUTURE SECTIONS
-    ========================================================== -->
+    ======================================================== -->
 
     <section id="about" style="height: 1px;"></section>
 

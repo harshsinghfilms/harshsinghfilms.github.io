@@ -590,8 +590,6 @@
     }
 
 
-    /* Subtle hover */
-
     .project-card:hover .project-thumbnail img {
       transform: scale(1.025);
       opacity: 0.88;
@@ -608,10 +606,7 @@
       align-items: center;
       justify-content: space-between;
 
-      padding:
-        14px
-        0
-        0;
+      padding: 14px 0 0;
     }
 
 
@@ -647,6 +642,600 @@
 
     .project-category.single .project-card {
       max-width: 50%;
+    }
+
+
+    /* =========================================================
+       FEATURE SCREENPLAYS
+       
+       Deliberately separated from normal creative work.
+       These are not downloadable screenplays.
+    ========================================================= */
+
+    .screenplays-section {
+      width: 100%;
+
+      max-width: 1200px;
+
+      margin: 185px auto 0;
+
+      padding-top: 30px;
+
+      position: relative;
+    }
+
+
+    .screenplays-intro {
+      margin-bottom: 42px;
+
+      max-width: 800px;
+    }
+
+
+    .screenplays-label {
+      margin-bottom: 16px;
+
+      color: #B89A63;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.24em;
+
+      text-transform: uppercase;
+    }
+
+
+    .screenplays-title {
+      color: #F1EEE7;
+
+      font-size: clamp(42px, 4.5vw, 70px);
+
+      line-height: 0.92;
+
+      font-weight: 300;
+
+      letter-spacing: -0.055em;
+    }
+
+
+    .screenplays-note {
+      margin-top: 20px;
+
+      max-width: 580px;
+
+      color: rgba(241, 238, 231, 0.48);
+
+      font-size: 12px;
+
+      line-height: 1.6;
+
+      letter-spacing: 0.01em;
+    }
+
+
+    /* =========================================================
+       SCREENPLAY GRID
+    ========================================================= */
+
+    .screenplay-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 0;
+
+      width: 100%;
+    }
+
+
+    /* =========================================================
+       SCREENPLAY CARD
+    ========================================================= */
+
+    .screenplay-card {
+      position: relative;
+
+      display: block;
+
+      color: inherit;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      overflow: visible;
+
+      padding: 0;
+
+      isolation: isolate;
+    }
+
+
+    .screenplay-poster {
+      position: relative;
+
+      width: 100%;
+
+      aspect-ratio: 2 / 3;
+
+      overflow: hidden;
+
+      background: #050505;
+
+      transform: translateZ(0);
+
+      transition:
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+
+    .screenplay-poster img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.8s ease,
+        opacity 0.8s ease;
+    }
+
+
+    /*
+       Cinematic aura behind the poster.
+       Hidden normally and revealed on hover.
+    */
+
+    .screenplay-card::before {
+      content: "";
+
+      position: absolute;
+
+      z-index: -1;
+
+      inset: 7% 8% -4% 8%;
+
+      background:
+        radial-gradient(
+          ellipse at center,
+          rgba(184, 154, 99, 0.42) 0%,
+          rgba(184, 154, 99, 0.18) 28%,
+          rgba(184, 154, 99, 0.06) 52%,
+          transparent 75%
+        );
+
+      filter: blur(35px);
+
+      opacity: 0;
+
+      transform: scale(0.72);
+
+      transition:
+        opacity 0.9s ease,
+        transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+
+    /*
+       Secondary atmospheric glow.
+    */
+
+    .screenplay-card::after {
+      content: "";
+
+      position: absolute;
+
+      z-index: -1;
+
+      inset: -10%;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(241, 238, 231, 0.08),
+          transparent 60%
+        );
+
+      opacity: 0;
+
+      filter: blur(25px);
+
+      transition:
+        opacity 0.9s ease;
+    }
+
+
+    /* =========================================================
+       SCREENPLAY HOVER
+    ========================================================= */
+
+    .screenplay-card:hover::before {
+      opacity: 1;
+
+      transform: scale(1);
+    }
+
+
+    .screenplay-card:hover::after {
+      opacity: 1;
+    }
+
+
+    .screenplay-card:hover .screenplay-poster {
+      transform:
+        translateY(-7px)
+        scale(1.012);
+
+      box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.65),
+        0 0 55px rgba(184, 154, 99, 0.12);
+    }
+
+
+    .screenplay-card:hover .screenplay-poster img {
+      transform: scale(1.025);
+
+      filter:
+        brightness(1.08)
+        contrast(1.03);
+
+      opacity: 0.98;
+    }
+
+
+    /* =========================================================
+       SCREENPLAY INFORMATION
+    ========================================================= */
+
+    .screenplay-info {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding-top: 16px;
+    }
+
+
+    .screenplay-name {
+      color: #F1EEE7;
+
+      font-size: 16px;
+
+      font-weight: 400;
+
+      letter-spacing: -0.01em;
+    }
+
+
+    .screenplay-type {
+      color: rgba(241, 238, 231, 0.30);
+
+      font-size: 8px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       ABOUT SECTION
+    ========================================================= */
+
+    .about-section {
+      width: 100%;
+
+      max-width: 1200px;
+
+      margin: 190px auto 0;
+
+      padding:
+        0
+        3.5vw
+        160px;
+
+      scroll-margin-top: 70px;
+    }
+
+
+    .about-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.45fr)
+        minmax(280px, 0.75fr);
+
+      gap: 9vw;
+
+      align-items: start;
+    }
+
+
+    .about-content {
+      max-width: 760px;
+    }
+
+
+    .about-label {
+      margin-bottom: 28px;
+
+      color: #B89A63;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.24em;
+
+      text-transform: uppercase;
+    }
+
+
+    .about-text p {
+      margin-bottom: 25px;
+
+      color: rgba(241, 238, 231, 0.78);
+
+      font-size: clamp(16px, 1.25vw, 19px);
+
+      line-height: 1.72;
+
+      letter-spacing: -0.005em;
+    }
+
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+       PROFILE IMAGE
+    ========================================================= */
+
+    .about-profile {
+      position: sticky;
+
+      top: 120px;
+
+      width: 100%;
+
+      max-width: 390px;
+
+      justify-self: end;
+    }
+
+
+    .about-profile img {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      object-fit: cover;
+
+      filter:
+        grayscale(100%)
+        contrast(1.02);
+
+      opacity: 0.92;
+    }
+
+
+    /* =========================================================
+       CONTACT SECTION
+    ========================================================= */
+
+    .contact-section {
+      width: 100%;
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+
+      padding:
+        80px
+        3.5vw
+        180px;
+
+      scroll-margin-top: 60px;
+    }
+
+
+    .contact-header {
+      max-width: 800px;
+
+      margin-bottom: 65px;
+    }
+
+
+    .contact-label {
+      margin-bottom: 18px;
+
+      color: #B89A63;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.24em;
+
+      text-transform: uppercase;
+    }
+
+
+    .contact-title {
+      color: #F1EEE7;
+
+      font-size: clamp(48px, 6vw, 88px);
+
+      line-height: 0.9;
+
+      font-weight: 300;
+
+      letter-spacing: -0.055em;
+    }
+
+
+    .contact-subtitle {
+      margin-top: 25px;
+
+      color: rgba(241, 238, 231, 0.56);
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       CONTACT FORM
+    ========================================================= */
+
+    .contact-form {
+      width: 100%;
+
+      max-width: 800px;
+    }
+
+
+    .form-row {
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 30px;
+    }
+
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+
+    .form-group label {
+      display: block;
+
+      margin-bottom: 10px;
+
+      color: rgba(241, 238, 231, 0.46);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+
+      text-transform: uppercase;
+    }
+
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+
+      border: 0;
+
+      border-bottom:
+        1px solid rgba(241, 238, 231, 0.20);
+
+      outline: none;
+
+      border-radius: 0;
+
+      background: transparent;
+
+      color: #F1EEE7;
+
+      font-family: inherit;
+
+      font-size: 15px;
+
+      padding:
+        10px
+        0
+        13px;
+
+      transition:
+        border-color 0.25s ease;
+    }
+
+
+    .form-group textarea {
+      min-height: 130px;
+
+      resize: vertical;
+
+      line-height: 1.6;
+    }
+
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(184, 154, 99, 0.85);
+    }
+
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(241, 238, 231, 0.20);
+    }
+
+
+    .send-button {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      margin-top: 5px;
+
+      padding:
+        13px
+        0;
+
+      border: 0;
+
+      border-bottom:
+        1px solid rgba(241, 238, 231, 0.72);
+
+      background: transparent;
+
+      color: #F1EEE7;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.2em;
+
+      text-transform: uppercase;
+
+      transition:
+        opacity 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+
+    .send-button:hover {
+      opacity: 0.55;
+
+      border-color: transparent;
     }
 
 
@@ -709,7 +1298,9 @@
       }
 
 
-      /* Projects */
+      /* =====================================================
+         PROJECTS MOBILE
+      ===================================================== */
 
       .projects-section {
         padding:
@@ -761,6 +1352,120 @@
       .project-number {
         font-size: 7px;
       }
+
+
+      /* =====================================================
+         SCREENPLAYS MOBILE
+      ===================================================== */
+
+      .screenplays-section {
+        margin-top: 125px;
+      }
+
+      .screenplays-title {
+        font-size: clamp(42px, 12vw, 64px);
+      }
+
+      .screenplays-note {
+        font-size: 11px;
+      }
+
+      .screenplay-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .screenplay-card:hover .screenplay-poster {
+        transform: none;
+
+        box-shadow: none;
+      }
+
+      .screenplay-card:hover::before,
+      .screenplay-card:hover::after {
+        opacity: 0;
+      }
+
+      .screenplay-card:hover .screenplay-poster img {
+        transform: none;
+
+        filter: none;
+      }
+
+
+      /* =====================================================
+         ABOUT MOBILE
+      ===================================================== */
+
+      .about-section {
+        margin-top: 130px;
+
+        padding:
+          0
+          20px
+          110px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+      }
+
+      .about-profile {
+        position: relative;
+
+        top: auto;
+
+        max-width: 100%;
+
+        justify-self: stretch;
+
+        order: -1;
+      }
+
+      .about-text p {
+        font-size: 15px;
+
+        line-height: 1.7;
+
+        margin-bottom: 22px;
+      }
+
+
+      /* =====================================================
+         CONTACT MOBILE
+      ===================================================== */
+
+      .contact-section {
+        padding:
+          50px
+          20px
+          120px;
+      }
+
+      .contact-header {
+        margin-bottom: 50px;
+      }
+
+      .contact-title {
+        font-size: clamp(48px, 14vw, 76px);
+      }
+
+      .contact-subtitle {
+        font-size: 13px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
     }
 
 
@@ -783,9 +1488,14 @@
         opacity: 1;
       }
 
-      .project-thumbnail img {
+      .project-thumbnail img,
+      .screenplay-poster,
+      .screenplay-poster img,
+      .screenplay-card::before,
+      .screenplay-card::after {
         transition: none;
       }
+
     }
 
   </style>
@@ -1178,16 +1888,330 @@
       </div>
 
 
+      <!-- =====================================================
+           FEATURE SCREENPLAYS
+      ====================================================== -->
+
+      <section
+        id="screenplays"
+        class="screenplays-section"
+      >
+
+        <div class="screenplays-intro">
+
+          <div class="screenplays-label">
+            Feature Films
+          </div>
+
+          <h2 class="screenplays-title">
+            Stories in Development
+          </h2>
+
+          <p class="screenplays-note">
+            Original feature screenplays currently in development.
+            For professional inquiries and screenplay discussions, get in touch.
+          </p>
+
+        </div>
+
+
+        <div class="screenplay-grid">
+
+
+          <!-- =================================================
+               ASTEROIDBOUND
+          ================================================== -->
+
+          <a
+            class="screenplay-card"
+            href="#contact"
+            aria-label="Discuss AsteroidBound screenplay"
+          >
+
+            <div class="screenplay-poster">
+
+              <img
+                src="Images/S1.png"
+                alt="AsteroidBound feature film poster"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="screenplay-info">
+
+              <div class="screenplay-name">
+                AsteroidBound
+              </div>
+
+              <div class="screenplay-type">
+                Feature Screenplay
+              </div>
+
+            </div>
+
+          </a>
+
+
+          <!-- =================================================
+               SNOWBOUND
+          ================================================== -->
+
+          <a
+            class="screenplay-card"
+            href="#contact"
+            aria-label="Discuss Snowbound screenplay"
+          >
+
+            <div class="screenplay-poster">
+
+              <img
+                src="Images/S2.png"
+                alt="Snowbound feature film poster"
+                loading="lazy"
+              >
+
+            </div>
+
+            <div class="screenplay-info">
+
+              <div class="screenplay-name">
+                Snowbound
+              </div>
+
+              <div class="screenplay-type">
+                Feature Screenplay
+              </div>
+
+            </div>
+
+          </a>
+
+
+        </div>
+
+      </section>
+
+
     </section>
 
 
     <!-- =======================================================
-         FUTURE SECTIONS
+         ABOUT
     ======================================================== -->
 
-    <section id="about" style="height: 1px;"></section>
+    <section
+      id="about"
+      class="about-section"
+    >
 
-    <section id="contact" style="height: 1px;"></section>
+      <div class="about-grid">
+
+
+        <!-- ABOUT TEXT -->
+
+        <div class="about-content">
+
+          <div class="about-label">
+            About
+          </div>
+
+          <div class="about-text">
+
+            <p>
+              I’m Harsh Singh, a writer, director, and animator focused on
+              developing original films and visual stories. My work sits at
+              the intersection of storytelling, filmmaking, animation, and
+              visual world-building, with a particular interest in creating
+              immersive worlds, complex characters, and narratives driven by
+              human choices.
+            </p>
+
+            <p>
+              I approach filmmaking from both creative and technical
+              perspectives. Writing allows me to develop the story, characters,
+              themes, and structure; directing allows me to shape those ideas
+              into a cohesive cinematic experience; and animation and visual
+              effects give me the ability to explore and build worlds that may
+              otherwise be difficult to bring to the screen.
+            </p>
+
+            <p>
+              I’m particularly drawn to stories that place characters under
+              pressure and examine how people respond when their relationships,
+              beliefs, and responsibilities are tested. I believe strong visual
+              storytelling should serve the story rather than exist simply for
+              spectacle, and I aim to combine ambitious visual ideas with
+              grounded emotional experiences.
+            </p>
+
+            <p>
+              Alongside developing my own films and screenplays, I continue to
+              build my skills across writing, directing, animation, visual
+              development, and production. My long-term goal is to develop and
+              produce original feature films with a distinct visual identity,
+              strong narrative foundations, and the scale to create genuinely
+              immersive cinematic experiences.
+            </p>
+
+            <p>
+              This portfolio is a collection of the work I’ve created and the
+              stories I’m developing along the way.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROFILE IMAGE -->
+
+        <div class="about-profile">
+
+          <img
+            src="Images/P.jpg"
+            alt="Harsh Singh"
+            loading="lazy"
+          >
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         CONTACT
+    ======================================================== -->
+
+    <section
+      id="contact"
+      class="contact-section"
+    >
+
+      <div class="contact-header">
+
+        <div class="contact-label">
+          Contact
+        </div>
+
+        <h2 class="contact-title">
+          Get in touch.
+        </h2>
+
+        <p class="contact-subtitle">
+          For writing, editing, color grading, and assistance in film production.
+        </p>
+
+      </div>
+
+
+      <!-- CONTACT FORM -->
+
+      <form
+        class="contact-form"
+        action="mailto:"
+        method="post"
+        enctype="text/plain"
+      >
+
+
+        <div class="form-row">
+
+
+          <!-- NAME -->
+
+          <div class="form-group">
+
+            <label for="name">
+              Name
+            </label>
+
+            <input
+              type="text"
+              id="name"
+              name="Name"
+              placeholder="Your name"
+              required
+            >
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="form-group">
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              name="Email"
+              placeholder="Your email"
+              required
+            >
+
+          </div>
+
+
+        </div>
+
+
+        <!-- SUBJECT -->
+
+        <div class="form-group">
+
+          <label for="subject">
+            Subject
+          </label>
+
+          <input
+            type="text"
+            id="subject"
+            name="Subject"
+            placeholder="What would you like to discuss?"
+            required
+          >
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div class="form-group">
+
+          <label for="message">
+            Message
+          </label>
+
+          <textarea
+            id="message"
+            name="Message"
+            placeholder="Tell me a little about the project."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <!-- SEND -->
+
+        <button
+          type="submit"
+          class="send-button"
+        >
+          Send message&nbsp; →
+        </button>
+
+
+      </form>
+
+    </section>
 
 
   </main>

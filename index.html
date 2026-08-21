@@ -32,6 +32,10 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       overflow-x: hidden;
     }
@@ -465,6 +469,217 @@
 
 
     /* =========================================================
+       PROJECTS
+    ========================================================= */
+
+    .projects {
+      position: relative;
+
+      width: 100%;
+
+      padding: 130px 3.5vw 150px;
+
+      background: #0A0A0A;
+
+      scroll-margin-top: 20px;
+    }
+
+    .projects-header {
+      max-width: 900px;
+
+      margin-bottom: 95px;
+    }
+
+    .projects-eyebrow {
+      margin-bottom: 18px;
+
+      color: #B89A63;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: 0.24em;
+
+      text-transform: uppercase;
+    }
+
+    .projects-title {
+      color: #F1EEE7;
+
+      font-size: clamp(42px, 5vw, 76px);
+
+      line-height: 0.95;
+
+      font-weight: 300;
+
+      letter-spacing: -0.05em;
+    }
+
+
+    /* Project category */
+
+    .project-category {
+      margin-bottom: 100px;
+    }
+
+    .project-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .category-title {
+      margin-bottom: 28px;
+
+      color: rgba(241, 238, 231, 0.55);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: 0.22em;
+
+      text-transform: uppercase;
+    }
+
+
+    /* Project grid */
+
+    .project-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 42px 28px;
+    }
+
+
+    /* Project card */
+
+    .project-card {
+      display: block;
+
+      color: inherit;
+
+      text-decoration: none;
+
+      cursor: pointer;
+    }
+
+    .project-image {
+      position: relative;
+
+      width: 100%;
+
+      aspect-ratio: 16 / 9;
+
+      overflow: hidden;
+
+      background: #111;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.035);
+
+      opacity: 0.82;
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(0, 0, 0, 0.16);
+
+      opacity: 0;
+
+      transition: opacity 0.35s ease;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-watch {
+      padding: 11px 16px;
+
+      border: 1px solid rgba(241, 238, 231, 0.65);
+
+      color: #F1EEE7;
+
+      font-size: 9px;
+      font-weight: 700;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
+
+      background: rgba(10, 10, 10, 0.45);
+
+      backdrop-filter: blur(4px);
+    }
+
+
+    /* Project information */
+
+    .project-info {
+      display: flex;
+
+      align-items: baseline;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding-top: 17px;
+    }
+
+    .project-name {
+      color: #F1EEE7;
+
+      font-size: 17px;
+      font-weight: 500;
+
+      letter-spacing: -0.01em;
+    }
+
+    .project-description {
+      margin-top: 7px;
+
+      color: rgba(241, 238, 231, 0.48);
+
+      font-size: 11px;
+
+      line-height: 1.4;
+
+      letter-spacing: 0.01em;
+    }
+
+    .project-number {
+      flex-shrink: 0;
+
+      color: rgba(241, 238, 231, 0.28);
+
+      font-size: 9px;
+      font-weight: 700;
+
+      letter-spacing: 0.16em;
+    }
+
+
+    /* =========================================================
        MOBILE
     ========================================================= */
 
@@ -521,6 +736,44 @@
         left: 20px;
         bottom: 22px;
       }
+
+
+      /* Projects */
+
+      .projects {
+        padding: 90px 20px 110px;
+      }
+
+      .projects-header {
+        margin-bottom: 65px;
+      }
+
+      .projects-title {
+        font-size: clamp(42px, 14vw, 64px);
+      }
+
+      .project-category {
+        margin-bottom: 75px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+
+        gap: 38px;
+      }
+
+      .project-info {
+        padding-top: 14px;
+      }
+
+      .project-name {
+        font-size: 16px;
+      }
+
+      .project-description {
+        font-size: 10px;
+      }
+
     }
 
 
@@ -530,6 +783,10 @@
 
     @media (prefers-reduced-motion: reduce) {
 
+      html {
+        scroll-behavior: auto;
+      }
+
       .still,
       .still img {
         animation: none;
@@ -537,6 +794,11 @@
 
       .still:first-child {
         opacity: 1;
+      }
+
+      .project-image img,
+      .project-overlay {
+        transition: none;
       }
 
     }
@@ -699,10 +961,305 @@
 
 
     <!-- =========================================================
-         FUTURE SECTIONS
+         PROJECTS
     ========================================================== -->
 
-    <section id="work" style="height: 1px;"></section>
+    <section id="work" class="projects">
+
+      <div class="projects-header">
+
+        <div class="projects-eyebrow">
+          Selected Work
+        </div>
+
+        <h2 class="projects-title">
+          Projects
+        </h2>
+
+      </div>
+
+
+      <!-- =====================================================
+           SHORT FILMS
+      ====================================================== -->
+
+      <div class="project-category">
+
+        <h3 class="category-title">
+          Short Films
+        </h3>
+
+        <div class="project-grid">
+
+
+          <a
+            class="project-card"
+            href="https://youtu.be/hunQa3KpqSg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="project-image">
+
+              <img
+                src="https://img.youtube.com/vi/hunQa3KpqSg/maxresdefault.jpg"
+                alt="Dawn of Life"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/hunQa3KpqSg/hqdefault.jpg';"
+              >
+
+              <div class="project-overlay">
+                <span class="project-watch">
+                  Watch Film
+                </span>
+              </div>
+
+            </div>
+
+            <div class="project-info">
+
+              <div>
+                <div class="project-name">
+                  Dawn of Life
+                </div>
+
+                <div class="project-description">
+                  A cinematic animated short exploring the beginning of life.
+                </div>
+              </div>
+
+              <div class="project-number">
+                01
+              </div>
+
+            </div>
+
+          </a>
+
+
+          <a
+            class="project-card"
+            href="https://youtu.be/IxVOakJjzZc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="project-image">
+
+              <img
+                src="https://img.youtube.com/vi/IxVOakJjzZc/maxresdefault.jpg"
+                alt="Unfinished Sail"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/IxVOakJjzZc/hqdefault.jpg';"
+              >
+
+              <div class="project-overlay">
+                <span class="project-watch">
+                  Watch Film
+                </span>
+              </div>
+
+            </div>
+
+            <div class="project-info">
+
+              <div>
+                <div class="project-name">
+                  Unfinished Sail
+                </div>
+
+                <div class="project-description">
+                  A short film built around atmosphere, movement and emotion.
+                </div>
+              </div>
+
+              <div class="project-number">
+                02
+              </div>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           DOCUMENTARY
+      ====================================================== -->
+
+      <div class="project-category">
+
+        <h3 class="category-title">
+          Documentary
+        </h3>
+
+        <div class="project-grid">
+
+
+          <a
+            class="project-card"
+            href="https://youtu.be/L3yxfnVOWVw"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="project-image">
+
+              <img
+                src="https://img.youtube.com/vi/L3yxfnVOWVw/maxresdefault.jpg"
+                alt="Gutka"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/L3yxfnVOWVw/hqdefault.jpg';"
+              >
+
+              <div class="project-overlay">
+                <span class="project-watch">
+                  Watch Documentary
+                </span>
+              </div>
+
+            </div>
+
+            <div class="project-info">
+
+              <div>
+                <div class="project-name">
+                  Gutka
+                </div>
+
+                <div class="project-description">
+                  A documentary exploring the culture and impact of gutka.
+                </div>
+              </div>
+
+              <div class="project-number">
+                03
+              </div>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           ADVERTISEMENTS
+      ====================================================== -->
+
+      <div class="project-category">
+
+        <h3 class="category-title">
+          Advertisements
+        </h3>
+
+        <div class="project-grid">
+
+
+          <a
+            class="project-card"
+            href="https://youtu.be/tMRLyvFKg9c"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="project-image">
+
+              <img
+                src="https://img.youtube.com/vi/tMRLyvFKg9c/maxresdefault.jpg"
+                alt="Creatine"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/tMRLyvFKg9c/hqdefault.jpg';"
+              >
+
+              <div class="project-overlay">
+                <span class="project-watch">
+                  Watch Advertisement
+                </span>
+              </div>
+
+            </div>
+
+            <div class="project-info">
+
+              <div>
+                <div class="project-name">
+                  Creatine
+                </div>
+
+                <div class="project-description">
+                  A focused product advertisement built for visual impact.
+                </div>
+              </div>
+
+              <div class="project-number">
+                04
+              </div>
+
+            </div>
+
+          </a>
+
+
+          <a
+            class="project-card"
+            href="https://youtu.be/cTHmW4zBFXg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            <div class="project-image">
+
+              <img
+                src="https://img.youtube.com/vi/cTHmW4zBFXg/maxresdefault.jpg"
+                alt="Crunch"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='https://img.youtube.com/vi/cTHmW4zBFXg/hqdefault.jpg';"
+              >
+
+              <div class="project-overlay">
+                <span class="project-watch">
+                  Watch Advertisement
+                </span>
+              </div>
+
+            </div>
+
+            <div class="project-info">
+
+              <div>
+                <div class="project-name">
+                  Crunch
+                </div>
+
+                <div class="project-description">
+                  A visual product advertisement focused on energy and presentation.
+                </div>
+              </div>
+
+              <div class="project-number">
+                05
+              </div>
+
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FUTURE SECTIONS
+    ========================================================== -->
 
     <section id="about" style="height: 1px;"></section>
 
